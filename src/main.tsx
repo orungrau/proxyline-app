@@ -1,9 +1,9 @@
 import React from 'react';
-import {View} from 'react-native';
 import codePush from 'react-native-code-push';
+import {DebugPage} from '~pages/debug-page';
 
 const App = () => {
-  return <View />;
+  return <DebugPage />;
 };
 
 let mainApp = codePush(App);
