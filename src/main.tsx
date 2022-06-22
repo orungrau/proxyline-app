@@ -12,7 +12,11 @@ const App = () => {
 
   return (
     <>
-      <StatusBar translucent={true} backgroundColor={Colors.CLEAN} />
+      <StatusBar
+        translucent={true}
+        backgroundColor={Colors.CLEAN}
+        barStyle={'light-content'}
+      />
       <DebugPage />
     </>
   );
