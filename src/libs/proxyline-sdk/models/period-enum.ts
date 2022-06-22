@@ -1,0 +1,17 @@
+export enum PeriodEnum {
+  NUMBER_5 = 5,
+  NUMBER_10 = 10,
+  NUMBER_20 = 20,
+  NUMBER_30 = 30,
+  NUMBER_60 = 60,
+  NUMBER_90 = 90,
+  NUMBER_120 = 120,
+  NUMBER_150 = 150,
+  NUMBER_180 = 180,
+  NUMBER_210 = 210,
+  NUMBER_240 = 240,
+  NUMBER_270 = 270,
+  NUMBER_300 = 300,
+  NUMBER_330 = 330,
+  NUMBER_360 = 360,
+}
