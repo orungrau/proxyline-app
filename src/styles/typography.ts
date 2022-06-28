@@ -56,3 +56,17 @@ export const SSP_SemiBold_14_FONT = {
   color: Colors.WHITE,
   lineHeight: 15,
 };
+
+export const SSP_SemiBold_15_FONT = {
+  fontSize: 15,
+  fontFamily: 'SourceSansPro-SemiBold',
+  color: Colors.WHITE,
+  lineHeight: 15,
+};
+
+export const SSP_Bold_14_FONT = {
+  fontSize: 14,
+  fontFamily: 'SourceSansPro-Bold',
+  color: Colors.WHITE,
+  lineHeight: 15,
+};

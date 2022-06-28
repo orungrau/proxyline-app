@@ -3,7 +3,6 @@ import {Colors, Typography} from '~styles';
 
 export default StyleSheet.create({
   container: {
-    backgroundColor: Colors.PRIMARY_BACKGROUND,
     flexDirection: 'column-reverse',
     paddingBottom: 4,
     paddingHorizontal: 30,
@@ -12,6 +11,8 @@ export default StyleSheet.create({
   wrapper: {
     flexDirection: 'row',
     justifyContent: 'space-between',
+    alignItems: 'center',
+    height: 44,
   },
   row: {
     flexDirection: 'row',
@@ -23,7 +24,6 @@ export default StyleSheet.create({
     ...Typography.PAGE_TITLE_FONT,
     textAlignVertical: 'center',
     textAlign: 'center',
-    height: 44,
   },
   left: {
     height: 44,

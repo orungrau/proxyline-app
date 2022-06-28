@@ -3,12 +3,14 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {Routes} from '~navigations/routes';
 import {AppNavigator} from '~navigations/app-navigator';
 import {Colors} from '~styles';
+import {TabBar} from '~components/tab-bar';
 
 const Tab = createBottomTabNavigator();
 
 export default function TabBarNavigator() {
   return (
     <Tab.Navigator
+      tabBar={props => <TabBar {...props} />}
       tabBarOptions={{
         style: {
           backgroundColor: Colors.PRIMARY_BACKGROUND,
