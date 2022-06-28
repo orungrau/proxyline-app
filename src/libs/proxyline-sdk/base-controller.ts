@@ -1,6 +1,19 @@
 import axios from 'axios';
 
-class ApiError extends Error {}
+export class ApiError extends Error {
+  public error?: {code: string; field: string[]; params: string[]};
+  public errorBody?: any;
+
+  constructor(
+    message: string,
+    error?: {code: string; field: string[]; params: string[]},
+    errorBody?: any,
+  ) {
+    super(message);
+    this.error = error;
+    this.errorBody = errorBody;
+  }
+}
 
 export type UploadProgressCallback = (progress: number) => void;
 
@@ -12,16 +25,22 @@ export class BaseController {
   }
 }
 
-interface PathParam {
-  key: string;
-  param: string;
-}
-
 export class Requester {
-  private endpoint = '';
+  private endpoint = 'https://proxydbtest.proxyline.net';
   private static instance: Requester;
 
+  private project: {id: string; key: string} | undefined = undefined;
+  private token?: string = undefined;
+
   private constructor() {}
+
+  public setProject(id: string, key: string) {
+    this.project = {id, key};
+  }
+
+  public setToken(token: string | undefined) {
+    this.token = token;
+  }
 
   public static shared(): Requester {
     if (!Requester.instance) {
@@ -35,7 +54,7 @@ export class Requester {
     path: string,
     action: 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE' = 'POST',
     payload: {
-      pathParams?: PathParam[];
+      pathParams?: {[key: string]: string};
       args?: {[key: string]: any};
       body?: {[key: string]: any} | FormData;
       headers?: {[key: string]: string};
@@ -46,12 +65,19 @@ export class Requester {
       const {pathParams, args, body} = payload;
       let _path = path;
       if (pathParams) {
-        pathParams.map(value => {
-          _path = _path.replace(`{${value.key}}`, value.param);
-        });
+        for (const [key, value] of Object.entries(pathParams)) {
+          _path = _path.replace(`{${key}}`, value);
+        }
+      }
+      if (this.project) {
+        _path = _path.replace('{project_id}', this.project.id);
+      }
+      if (this.token) {
+        _path = _path.replace('{user_token}', this.token);
       }
       const _headers = {
         ...(payload.headers ? payload.headers : {}),
+        ...(this.project ? {apikey: this.project.key} : {}),
       };
       const response = await axios.request({
         url: this.endpoint + _path,
@@ -72,7 +98,8 @@ export class Requester {
       });
       return response.data;
     } catch (e) {
-      throw new ApiError(`${e};`);
+      // @ts-ignore
+      throw new ApiError(`${e};`, e.response?.data?.error, e.response?.data);
     }
   }
 }

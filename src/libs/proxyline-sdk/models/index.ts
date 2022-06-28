@@ -23,3 +23,4 @@ export * from './telegram-user-create-schema';
 export * from './type-enum';
 export * from './user-create-schema';
 export * from './verification-schema';
+export * from './access-token-schema';
