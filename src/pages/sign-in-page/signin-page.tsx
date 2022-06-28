@@ -23,8 +23,8 @@ import {setAuthAction} from '~stores/account/actions';
 interface Props {}
 
 const SignInPage: React.FC<Props> = ({}) => {
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   const dispatch = useDispatch();
 

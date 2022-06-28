@@ -22,7 +22,7 @@ import {ApiError} from '~libs/proxyline-sdk/base-controller';
 interface Props {}
 
 const SignUpPage: React.FC<Props> = ({}) => {
-  const [email, setEmail] = useState();
+  const [email, setEmail] = useState('');
   const dispatch = useDispatch();
 
   const handleOpenSignIn = () => {
