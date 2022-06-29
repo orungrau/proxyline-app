@@ -9,7 +9,7 @@ import {
   View,
 } from 'react-native';
 import styles from './styles';
-import {SafeAreaView} from 'react-native-safe-area-context';
+import {SafeAreaView, useSafeAreaInsets} from 'react-native-safe-area-context';
 import {Button} from '~components/button';
 import {TextInput} from '~components/text-input';
 import {Colors, Styles} from '~styles';
@@ -23,6 +23,9 @@ import {setAuthAction} from '~stores/account/actions';
 interface Props {}
 
 const SignInPage: React.FC<Props> = ({}) => {
+  const insets = useSafeAreaInsets();
+  const bottomInsert = {marginBottom: insets.bottom === 0 ? 14 : 0};
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -93,7 +96,7 @@ const SignInPage: React.FC<Props> = ({}) => {
                 title={'Пароль'}
                 placeholder={'пароль'}
                 onChangeText={setPassword}
-                secureTextEntry={true}
+                isPassword={true}
                 textContentType={'password'}
                 autoCapitalize="none"
               />
@@ -111,6 +114,7 @@ const SignInPage: React.FC<Props> = ({}) => {
             </Text>
           </TouchableOpacity>
           <Button
+            style={bottomInsert}
             onPress={handleSignIn}
             title={'Войти'}
             textColor={Colors.BLACK}

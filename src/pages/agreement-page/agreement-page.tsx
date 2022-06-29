@@ -1,10 +1,10 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {ScrollView, Text} from 'react-native';
 import styles from './styles';
-import {NavigationService, Routes} from '~navigations';
-import {RouteProp} from '@react-navigation/native';
+import {NavigationService} from '~navigations';
+import {RouteProp, useNavigation} from '@react-navigation/native';
 import {Button} from '~components/button';
-import {SafeAreaView} from 'react-native-safe-area-context';
+import {SafeAreaView, useSafeAreaInsets} from 'react-native-safe-area-context';
 import {Colors} from '~styles';
 
 interface Props {
@@ -12,15 +12,34 @@ interface Props {
 }
 
 const AgreementPage: React.FC<Props> = ({route}) => {
+  const navigation = useNavigation();
+
+  const insets = useSafeAreaInsets();
+  const bottomInsert = {marginBottom: insets.bottom === 0 ? 14 : 0};
+
+  const type = route?.params?.type;
+
+  useEffect(() => {
+    navigation.setOptions({
+      title: type === 'pp' ? 'Политика конфиденциальности' : 'Публичная оферта',
+    });
+  }, [navigation, type]);
+
   const handleOk = () => {
-    NavigationService.navigate(Routes.Auth.VerificationPage, route?.params);
+    NavigationService.back();
   };
+
   return (
     <SafeAreaView edges={['bottom']} style={styles.container}>
       <ScrollView style={styles.scroll}>
-        <Text style={styles.text}>{data}</Text>
+        <Text style={styles.text}>{type === 'pp' ? data : ''}</Text>
       </ScrollView>
-      <Button title={'Принять'} textColor={Colors.BLACK} onPress={handleOk} />
+      <Button
+        style={bottomInsert}
+        title={'Принять'}
+        textColor={Colors.BLACK}
+        onPress={handleOk}
+      />
     </SafeAreaView>
   );
 };

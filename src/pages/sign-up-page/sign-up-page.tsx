@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import styles from './styles';
 import {Colors, Styles} from '~styles';
-import {SafeAreaView} from 'react-native-safe-area-context';
+import {SafeAreaView, useSafeAreaInsets} from 'react-native-safe-area-context';
 import {TextInput} from '~components/text-input';
 import {Button} from '~components/button';
 import {NavigationService, Routes} from '~navigations';
@@ -22,12 +22,27 @@ import {ApiError} from '~libs/proxyline-sdk/base-controller';
 interface Props {}
 
 const SignUpPage: React.FC<Props> = ({}) => {
+  const insets = useSafeAreaInsets();
+  const bottomInsert = {marginBottom: insets.bottom === 0 ? 14 : 0};
+
   const [email, setEmail] = useState('');
   const dispatch = useDispatch();
+
+  const handleOpenPublicOffer = () => {
+    NavigationService.navigate(Routes.Auth.Agreement, {
+      type: 'po',
+    });
+  };
+  const handleOpenPrivacyPolicy = () => {
+    NavigationService.navigate(Routes.Auth.Agreement, {
+      type: 'pp',
+    });
+  };
 
   const handleOpenSignIn = () => {
     NavigationService.back();
   };
+
   const handleSignUp = () => {
     if (email === '') {
       Alert.alert('Ошибка', 'Не указан email и/или пароль', [{text: 'Ok'}]);
@@ -38,7 +53,7 @@ const SignUpPage: React.FC<Props> = ({}) => {
     ProxyLineSDK.auth
       .verificationCode(email)
       .then(() => {
-        NavigationService.navigate(Routes.Auth.Agreement, {
+        NavigationService.navigate(Routes.Auth.VerificationPage, {
           email: email,
           type: 'signup',
         });
@@ -81,8 +96,18 @@ const SignUpPage: React.FC<Props> = ({}) => {
                 autoCapitalize="none"
               />
               <Text style={styles.bottomTitle}>
-                Регистрируясь вы принимаете публичную оферту и политику
-                конфиденциальности
+                Регистрируясь вы принимаете{' '}
+                <Text
+                  onPress={handleOpenPublicOffer}
+                  style={styles.textUnderline}>
+                  публичную оферту
+                </Text>
+                <Text> и </Text>
+                <Text
+                  onPress={handleOpenPrivacyPolicy}
+                  style={styles.textUnderline}>
+                  политику конфиденциальности
+                </Text>
               </Text>
             </View>
           </View>
@@ -93,6 +118,7 @@ const SignUpPage: React.FC<Props> = ({}) => {
             </Text>
           </TouchableOpacity>
           <Button
+            style={bottomInsert}
             onPress={handleSignUp}
             title={'Зарегистрироваться'}
             textColor={Colors.BLACK}

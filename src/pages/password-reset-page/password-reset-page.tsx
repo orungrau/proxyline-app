@@ -10,7 +10,7 @@ import {
 import styles from './styles';
 import {NavigationService, Routes} from '~navigations';
 import {Colors, Styles} from '~styles';
-import {SafeAreaView} from 'react-native-safe-area-context';
+import {SafeAreaView, useSafeAreaInsets} from 'react-native-safe-area-context';
 import {TextInput} from '~components/text-input';
 import {Button} from '~components/button';
 import {useDispatch} from 'react-redux';
@@ -21,6 +21,9 @@ import {ApiError} from '~libs/proxyline-sdk/base-controller';
 interface Props {}
 
 const PasswordResetPage: React.FC<Props> = ({}) => {
+  const insets = useSafeAreaInsets();
+  const bottomInsert = {marginBottom: insets.bottom === 0 ? 14 : 0};
+
   const [email, setEmail] = useState('');
   const dispatch = useDispatch();
 
@@ -87,6 +90,7 @@ const PasswordResetPage: React.FC<Props> = ({}) => {
             textColor={Colors.BLACK}
           />
           <Button
+            style={bottomInsert}
             onPress={handleCancel}
             title={'Отменить'}
             textColor={Colors.WHITE}

@@ -55,4 +55,7 @@ export default StyleSheet.create({
     ...Typography.SSP_SemiBold_14_FONT,
     textDecorationLine: 'underline',
   },
+  textUnderline: {
+    textDecorationLine: 'underline',
+  },
 });

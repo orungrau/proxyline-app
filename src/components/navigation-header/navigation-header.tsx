@@ -31,10 +31,7 @@ const NavigationHeader = (props: Props) => {
               onPress={() => {
                 props.navigation.goBack();
               }}>
-              <Image
-                height={44}
-                source={require('~assets/icons/back-arrow.png')}
-              />
+              <Image source={require('~assets/icons/back-arrow.png')} />
               <Text style={styles.backText}>Назад</Text>
             </TouchableOpacity>
           ) : null}

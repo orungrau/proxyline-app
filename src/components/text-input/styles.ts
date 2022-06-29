@@ -15,10 +15,16 @@ export default StyleSheet.create({
     borderColor: Colors.GRAY_333842,
     borderWidth: 1,
     borderRadius: 8,
-    justifyContent: 'center',
+    alignItems: 'center',
     paddingHorizontal: 20,
+    flexDirection: 'row',
   },
   inputField: {
+    flex: 1,
     color: Colors.WHITE,
+    marginRight: 8,
+  },
+  showHide: {
+    tintColor: Colors.WHITE,
   },
 });

@@ -29,7 +29,7 @@ export function AuthNavigator() {
       <StackNavigator.Screen
         options={{
           headerShown: true,
-          title: 'Политика конфиденциальности',
+          title: '',
         }}
         name={Routes.Auth.Agreement}
         component={AgreementPage}

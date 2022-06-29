@@ -10,7 +10,7 @@ import {
 import styles from './styles';
 import {NavigationService} from '~navigations';
 import {Colors, Styles} from '~styles';
-import {SafeAreaView} from 'react-native-safe-area-context';
+import {SafeAreaView, useSafeAreaInsets} from 'react-native-safe-area-context';
 import {TextInput} from '~components/text-input';
 import {Button} from '~components/button';
 import {setGlobalLoading} from '~stores/global/actions';
@@ -26,6 +26,9 @@ interface Props {
 }
 
 const VerificationPage: React.FC<Props> = ({route}) => {
+  const insets = useSafeAreaInsets();
+  const bottomInsert = {marginBottom: insets.bottom === 0 ? 14 : 0};
+
   const dispatch = useDispatch();
   const [code, setCode] = useState('');
 
@@ -101,6 +104,7 @@ const VerificationPage: React.FC<Props> = ({route}) => {
             textColor={Colors.BLACK}
           />
           <Button
+            style={bottomInsert}
             onPress={handleCancel}
             title={'Отменить'}
             textColor={Colors.WHITE}
