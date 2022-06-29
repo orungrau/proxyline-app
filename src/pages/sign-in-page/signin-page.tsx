@@ -42,7 +42,7 @@ const SignInPage: React.FC<Props> = ({}) => {
 
     dispatch(setGlobalLoading(true));
     ProxyLineSDK.auth
-      .singIn(email, password)
+      .singIn(email.replace(' ', '').toLocaleLowerCase(), password)
       .then(response => {
         if (!response.success) {
           Alert.alert('Ошибка', 'Неверный email или пароль', [{text: 'Ok'}]);
