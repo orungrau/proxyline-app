@@ -5,8 +5,12 @@ import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {Routes} from '~navigations';
 import {CommonActions} from '@react-navigation/native';
 import {BottomTabBarProps} from '@react-navigation/bottom-tabs';
+import {useAppSelector} from '~stores';
+import {getTabBarShow} from '~stores/global/selectors';
 
 const TabBar: React.FC<BottomTabBarProps> = props => {
+  const show = useAppSelector(getTabBarShow());
+
   const insets = useSafeAreaInsets();
 
   const {state} = props;
@@ -47,6 +51,10 @@ const TabBar: React.FC<BottomTabBarProps> = props => {
   };
 
   const bottomStyle = {bottom: insets.bottom === 0 ? 14 : insets.bottom};
+
+  if (!show) {
+    return null;
+  }
 
   return (
     <>

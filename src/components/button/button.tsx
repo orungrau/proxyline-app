@@ -3,7 +3,7 @@ import {ColorValue, Text, TouchableOpacity, ViewStyle} from 'react-native';
 import styles from './styles';
 
 interface Props {
-  style?: ViewStyle;
+  style?: ViewStyle | ViewStyle[];
   title: string;
   onPress?: () => void;
   tintColor?: ColorValue;

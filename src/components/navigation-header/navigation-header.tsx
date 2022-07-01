@@ -44,7 +44,9 @@ const NavigationHeader = (props: Props) => {
             {props.title}
           </Text>
         </View>
-        <View style={styles.blockWrapper} />
+        <View style={styles.blockWrapper}>
+          {props.headerRight ? <View>{props.headerRight({})}</View> : null}
+        </View>
       </View>
     </View>
   );

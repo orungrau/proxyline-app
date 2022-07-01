@@ -5,3 +5,8 @@ export const getGlobal =
   () =>
   (store: AppState): GlobalState =>
     store.global;
+
+export const getTabBarShow =
+  () =>
+  (store: AppState): boolean =>
+    store.global.tabBarShow;

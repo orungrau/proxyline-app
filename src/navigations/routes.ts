@@ -15,5 +15,13 @@ export const Routes = {
   App: {
     Dashboard: 'Dashboard',
     Settings: 'Settings',
+    Account: 'Account',
+    ChangePassword: 'ChangePassword',
+    WriteUs: 'WriteUs',
+    FAQ: 'FAQ',
+    ProxyCheck: 'ProxyCheck',
+    ProxyCheckResult: 'ProxyCheckResult',
+    SpeedTest: 'SpeedTest',
+    SpeedTestResult: 'SpeedTestResult',
   },
 };

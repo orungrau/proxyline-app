@@ -17,12 +17,15 @@ export default StyleSheet.create({
     borderRadius: 8,
     alignItems: 'center',
     paddingHorizontal: 20,
+    paddingVertical: 4,
     flexDirection: 'row',
   },
   inputField: {
     flex: 1,
     color: Colors.WHITE,
     marginRight: 8,
+    textAlignVertical: 'top',
+    height: '100%',
   },
   showHide: {
     tintColor: Colors.WHITE,

@@ -18,9 +18,6 @@ import ProxyLineSDK from '~libs/proxyline-sdk';
 import {ApiError} from '~libs/proxyline-sdk/base-controller';
 import {useDispatch} from 'react-redux';
 import {RouteProp} from '@react-navigation/native';
-import {AccessTokenSchema} from '~libs/proxyline-sdk/models';
-import {setAuthAction} from '~stores/account/actions';
-
 interface Props {
   route?: RouteProp<any, any>;
 }
@@ -46,17 +43,24 @@ const VerificationPage: React.FC<Props> = ({route}) => {
         ? ProxyLineSDK.auth.signUp(email, code)
         : ProxyLineSDK.auth.resetPassword(email, code);
     request
-      .then(response => {
-        console.log(response);
+      .then(_ => {
         if (type === 'signup') {
           // @ts-ignore
-          const _r: AccessTokenSchema = response;
-          dispatch(setAuthAction(String(_r.user_id), _r.token));
+          // const _r: AccessTokenSchema = response;
+          // dispatch(setAuthAction(String(_r.user_id), _r.token));
         } else {
           // @ts-ignore
-          const _r: {user: AccessTokenSchema} = response;
-          dispatch(setAuthAction(String(_r.user.user_id), _r.user.token));
+          // const _r: {user: AccessTokenSchema} = response;
+          // dispatch(setAuthAction(String(_r.user.user_id), _r.user.token));
         }
+        Alert.alert('Успешно', 'Пароль отправлен на email', [
+          {
+            text: 'Ok',
+            onPress: () => {
+              NavigationService.popToTop();
+            },
+          },
+        ]);
       })
       .catch((reason: ApiError) => {
         Alert.alert('Ошибка', reason.error ? reason.error.code : 'UNKNOWN', [

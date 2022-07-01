@@ -3,8 +3,20 @@ import {TypedUseSelectorHook, useDispatch, useSelector} from 'react-redux';
 import thunkMiddleware, {ThunkAction} from 'redux-thunk';
 import {composeWithDevTools} from 'redux-devtools-extension';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+// @ts-ignore
+import createSensitiveStorage from 'redux-persist-sensitive-storage';
 import {persistReducer, persistStore} from 'redux-persist';
 import {legacy_createStore as createStore} from 'redux';
+
+const sensitiveStorage = createSensitiveStorage({
+  keychainService: 'proxyLineKeychain',
+  sharedPreferencesName: 'proxyLineSharedPrefs',
+});
+
+const accountPersistConfig = {
+  key: 'account',
+  storage: sensitiveStorage,
+};
 
 // Reducers
 import globalReducer from './global';
@@ -12,7 +24,7 @@ import accountReducer from './account';
 
 const rootReducer = combineReducers({
   global: globalReducer,
-  account: accountReducer,
+  account: persistReducer(accountPersistConfig, accountReducer),
 });
 
 const persistConfig = {

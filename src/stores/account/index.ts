@@ -5,6 +5,8 @@ export interface AccountState {
   isAuth: boolean;
   userId?: string;
   token?: string;
+  email?: string;
+  password?: string;
 }
 
 const initialState: AccountState = {
@@ -15,10 +17,20 @@ const accountSlice = createSlice({
   name: 'account',
   initialState,
   reducers: {
-    setAuth(state, action: PayloadAction<{userId: string; token: string}>) {
+    setAuth(
+      state,
+      action: PayloadAction<{
+        userId: string;
+        token: string;
+        email: string;
+        password: string;
+      }>,
+    ) {
       state.isAuth = true;
       state.userId = action.payload.userId;
       state.token = action.payload.token;
+      state.email = action.payload.email;
+      state.password = action.payload.password;
       ProxyLineSDK.setToken(state.userId + ':' + state.token);
       return state;
     },

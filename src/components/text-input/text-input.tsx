@@ -14,6 +14,7 @@ import {Colors} from '~styles';
 interface Props extends TextInputProps {
   title?: string;
   style?: ViewStyle;
+  wrapStyle?: ViewStyle;
   placeholder?: string;
   isPassword?: boolean;
 }
@@ -23,11 +24,11 @@ const TextInput: React.FC<Props> = props => {
 
   const handleTogglePasswordVisible = () => setShowPassword(!showPassword);
 
-  const {title, style, isPassword} = props;
+  const {title, style, isPassword, wrapStyle} = props;
   return (
     <View style={[styles.container, style]}>
       {title ? <Text style={styles.title}>{title}</Text> : null}
-      <View style={styles.inputWrapper}>
+      <View style={[styles.inputWrapper, wrapStyle]}>
         <TextInputComponent
           {...props}
           style={styles.inputField}

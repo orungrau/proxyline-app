@@ -49,7 +49,12 @@ const SignInPage: React.FC<Props> = ({}) => {
           return;
         }
         dispatch(
-          setAuthAction(String(response.user.user_id), response.user.token),
+          setAuthAction(
+            String(response.user.user_id),
+            response.user.token,
+            email,
+            password,
+          ),
         );
       })
       .catch((reason: ApiError) => {

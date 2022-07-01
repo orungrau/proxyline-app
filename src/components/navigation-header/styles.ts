@@ -7,6 +7,7 @@ export default StyleSheet.create({
     paddingBottom: 4,
     paddingHorizontal: 30,
     height: 44,
+    backgroundColor: Colors.PRIMARY_BACKGROUND,
   },
   wrapper: {
     flexDirection: 'row',
@@ -48,6 +49,6 @@ export default StyleSheet.create({
     paddingHorizontal: 8,
   },
   blockWrapper: {
-    width: '20%',
+    width: '25%',
   },
 });

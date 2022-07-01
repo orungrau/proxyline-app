@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {ReactNode} from 'react';
 import {
   Image,
   ImageSourcePropType,
@@ -14,6 +14,7 @@ interface Props {
   icon?: ImageSourcePropType;
   value?: string;
   style?: ViewStyle;
+  view?: ReactNode;
   onPress?: () => void;
 }
 
@@ -24,6 +25,7 @@ const ActionCell: React.FC<Props> = ({
   isArrow,
   icon,
   onPress,
+  view,
 }) => {
   return (
     <TouchableOpacity onPress={onPress} style={[styles.container, style]}>
@@ -33,6 +35,7 @@ const ActionCell: React.FC<Props> = ({
         <Image source={require('~assets/icons/action-arrow.png')} />
       ) : null}
       {icon ? <Image source={icon} /> : null}
+      {view ? view : null}
     </TouchableOpacity>
   );
 };
