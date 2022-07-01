@@ -54,7 +54,7 @@ const SignUpPage: React.FC<Props> = ({}) => {
       .verificationCode(email)
       .then(() => {
         NavigationService.navigate(Routes.Auth.VerificationPage, {
-          email: email,
+          email: email.replace(' ', '').toLocaleLowerCase(),
           type: 'signup',
         });
       })
