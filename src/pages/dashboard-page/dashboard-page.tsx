@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import styles from './styles';
 import {IpApiSdk} from '~libs/ip-api-sdk';
+import {ConnectionCard} from '~pages/dashboard-page/components/connection-card';
 
 interface Props {}
 
@@ -43,6 +44,7 @@ const DashboardPage: React.FC<Props> = ({}) => {
             />
           </TouchableOpacity>
         </View>
+        <ConnectionCard />
       </SafeAreaView>
     </ImageBackground>
   );

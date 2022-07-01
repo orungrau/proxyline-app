@@ -7,3 +7,4 @@ export const CLEAN = '#00000000';
 export const GRAY_1E2127 = '#1E2127';
 export const GRAY_333842 = '#333842';
 export const GRAY_CBCBCB = '#CBCBCB';
+export const RED = '#C14645';

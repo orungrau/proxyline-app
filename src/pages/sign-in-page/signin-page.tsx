@@ -50,7 +50,7 @@ const SignInPage: React.FC<Props> = ({}) => {
         }
         dispatch(
           setAuthAction(
-            String(response.user.user_id),
+            String(response.user.id),
             response.user.token,
             email,
             password,

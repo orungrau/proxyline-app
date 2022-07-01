@@ -1,4 +1,4 @@
 export interface AccessTokenSchema {
-  user_id: number;
+  id: number;
   token: string;
 }

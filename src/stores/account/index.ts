@@ -34,6 +34,10 @@ const accountSlice = createSlice({
       ProxyLineSDK.setToken(state.userId + ':' + state.token);
       return state;
     },
+    setPassword(state, action: PayloadAction<string>) {
+      state.password = action.payload;
+      return state;
+    },
     logout() {
       ProxyLineSDK.setToken(undefined);
       return initialState;
@@ -41,6 +45,6 @@ const accountSlice = createSlice({
   },
 });
 
-export const {setAuth, logout} = accountSlice.actions;
+export const {setAuth, logout, setPassword} = accountSlice.actions;
 
 export default accountSlice.reducer;
