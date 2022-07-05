@@ -17,6 +17,7 @@ interface Props extends TextInputProps {
   wrapStyle?: ViewStyle;
   placeholder?: string;
   isPassword?: boolean;
+  multiline: boolean;
 }
 
 const TextInput: React.FC<Props> = props => {
@@ -24,14 +25,20 @@ const TextInput: React.FC<Props> = props => {
 
   const handleTogglePasswordVisible = () => setShowPassword(!showPassword);
 
-  const {title, style, isPassword, wrapStyle} = props;
+  const {title, style, isPassword, wrapStyle, multiline} = props;
   return (
     <View style={[styles.container, style]}>
       {title ? <Text style={styles.title}>{title}</Text> : null}
-      <View style={[styles.inputWrapper, wrapStyle]}>
+      <View
+        style={[
+          styles.inputWrapper,
+          multiline ? styles.inputWrapperMulti : {},
+          wrapStyle,
+        ]}>
         <TextInputComponent
           {...props}
-          style={styles.inputField}
+          multiline={multiline}
+          style={[styles.inputField, multiline ? styles.inputFieldMulti : {}]}
           placeholderTextColor={Colors.GRAY_333842}
           secureTextEntry={isPassword ? !showPassword : false}
         />

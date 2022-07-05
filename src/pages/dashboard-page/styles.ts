@@ -29,6 +29,14 @@ export default StyleSheet.create({
   },
   countryWrapper: {
     marginTop: 10,
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  flagImage: {
+    height: 12,
+    width: 16,
+    borderRadius: 1,
+    marginLeft: 6,
   },
   country: {
     ...Typography.SSP_SemiBold_14_FONT,
@@ -39,5 +47,12 @@ export default StyleSheet.create({
     alignItems: 'center',
     marginTop: 40,
     marginBottom: 70,
+  },
+  overlay: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
   },
 });

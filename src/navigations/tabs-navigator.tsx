@@ -26,12 +26,12 @@ export default function TabBarNavigator() {
       </Tab.Screen>
       <Tab.Screen name={Routes.Tabs.ProxiesTab}>
         {props => (
-          <AppNavigator initialRouteName={Routes.App.Dashboard} {...props} />
+          <AppNavigator initialRouteName={Routes.App.Proxy} {...props} />
         )}
       </Tab.Screen>
       <Tab.Screen name={Routes.Tabs.OrdersTab}>
         {props => (
-          <AppNavigator initialRouteName={Routes.App.Dashboard} {...props} />
+          <AppNavigator initialRouteName={Routes.App.Orders} {...props} />
         )}
       </Tab.Screen>
       <Tab.Screen name={Routes.Tabs.SettingsTab}>

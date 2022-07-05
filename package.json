@@ -29,6 +29,7 @@
     "react-native-code-push": "^7.0.4",
     "react-native-device-info": "^9.0.2",
     "react-native-gesture-handler": "^2.4.2",
+    "react-native-hyperlink": "^0.0.19",
     "react-native-indicators": "^0.17.0",
     "react-native-reanimated": "^2.8.0",
     "react-native-safe-area-context": "^4.3.1",

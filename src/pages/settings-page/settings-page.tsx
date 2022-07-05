@@ -1,5 +1,12 @@
 import React, {useEffect, useState} from 'react';
-import {View, Text, TouchableOpacity, Linking, Platform} from 'react-native';
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  Linking,
+  Platform,
+  ScrollView,
+} from 'react-native';
 import styles from './styles';
 import DeviceInfo from 'react-native-device-info';
 import {Styles} from '~styles';
@@ -62,7 +69,7 @@ const SettingsPage: React.FC<Props> = ({}) => {
   }, []);
 
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <View style={styles.buttonsWrapper}>
         <BigButton
           onPress={handleSpeedCheck}
@@ -95,7 +102,7 @@ const SettingsPage: React.FC<Props> = ({}) => {
       <View style={styles.space} />
       <View style={styles.space} />
       <View style={styles.space} />
-    </View>
+    </ScrollView>
   );
 };
 

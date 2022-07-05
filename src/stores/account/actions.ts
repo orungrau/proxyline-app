@@ -1,6 +1,7 @@
 import {AppThunk} from '~stores';
-import {setAuth, logout, setPassword} from '~stores/account/index';
+import {setAuth, logout, setPassword, setWallet} from '~stores/account/index';
 import {setGlobalLoading} from '~stores/global/actions';
+import ProxyLineSDK from '~libs/proxyline-sdk';
 
 export const setAuthAction =
   (userId: string, token: string, email: string, password: string): AppThunk =>
@@ -16,8 +17,10 @@ export const setPasswordAction =
 
 export const fetchAccountData = (): AppThunk => async dispatch => {
   dispatch(setGlobalLoading(true));
-
-  dispatch(setGlobalLoading(false));
+  ProxyLineSDK.account
+    .getBalance()
+    .then(r => dispatch(setWallet(r)))
+    .finally(() => dispatch(setGlobalLoading(false)));
 };
 
 export const refreshIpData = (): AppThunk => async _ => {

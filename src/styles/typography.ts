@@ -43,6 +43,12 @@ export const SSP_SemiBold_16_FONT = {
   color: Colors.WHITE,
 };
 
+export const SSP_Bold_16_FONT = {
+  fontSize: 16,
+  fontFamily: 'SourceSansPro-Bold',
+  color: Colors.WHITE,
+};
+
 export const SSP_SemiBold_22_FONT = {
   fontSize: 22,
   fontFamily: 'SourceSansPro-SemiBold',

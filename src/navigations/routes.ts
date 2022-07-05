@@ -23,5 +23,8 @@ export const Routes = {
     ProxyCheckResult: 'ProxyCheckResult',
     SpeedTest: 'SpeedTest',
     SpeedTestResult: 'SpeedTestResult',
+    Orders: 'Orders',
+    Proxy: 'Proxy',
+    Wallet: 'Wallet',
   },
 };

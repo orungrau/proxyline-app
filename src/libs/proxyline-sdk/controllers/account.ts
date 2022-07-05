@@ -14,4 +14,15 @@ export class AccountController extends BaseController {
       },
     );
   }
+
+  public async getBalance(): Promise<{
+    balance: number;
+    partner_balance: number;
+  }> {
+    return await this.requester.exec(
+      '/projectapi/v1/{project_id}/user/{user_token}/balances/',
+      'GET',
+      {},
+    );
+  }
 }

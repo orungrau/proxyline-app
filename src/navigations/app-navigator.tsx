@@ -12,6 +12,9 @@ import {ProxyCheckPage} from '~pages/settings-page/pages/proxy-check-page';
 import {ProxyCheckResultPage} from '~pages/settings-page/pages/proxy-check-page/pages/proxy-check-result-page';
 import {SpeedTestPage} from '~pages/settings-page/pages/speed-test-page';
 import {SpeedTestResultPage} from '~pages/settings-page/pages/speed-test-page/pages/speed-test-result-page';
+import {ProxyPage} from '~pages/proxy-page';
+import {OrdersPage} from '~pages/orders-page';
+import {WalletPage} from '~pages/wallet-page';
 
 interface Props {
   initialRouteName: string;
@@ -29,6 +32,20 @@ export function AppNavigator(props: Props) {
         }}
         name={Routes.App.Dashboard}
         component={DashboardPage}
+      />
+      <StackNavigator.Screen
+        options={{
+          title: 'Прокси',
+        }}
+        name={Routes.App.Proxy}
+        component={ProxyPage}
+      />
+      <StackNavigator.Screen
+        options={{
+          title: 'Заказы',
+        }}
+        name={Routes.App.Orders}
+        component={OrdersPage}
       />
       <StackNavigator.Screen
         options={{
@@ -92,6 +109,13 @@ export function AppNavigator(props: Props) {
         }}
         name={Routes.App.SpeedTestResult}
         component={SpeedTestResultPage}
+      />
+      <StackNavigator.Screen
+        options={{
+          title: 'Ваш баланс',
+        }}
+        name={Routes.App.Wallet}
+        component={WalletPage}
       />
     </StackNavigator.Navigator>
   );

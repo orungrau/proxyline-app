@@ -1,8 +1,8 @@
 import axios from 'axios';
 
 export class IpApiSdk {
-  static async getIpData() {
+  static async getIpData(): Promise<any> {
     const response = await axios.get('http://ip-api.com/json/');
-    console.log(response.data);
+    return response.data;
   }
 }

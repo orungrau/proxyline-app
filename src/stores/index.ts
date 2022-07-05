@@ -7,6 +7,10 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import createSensitiveStorage from 'redux-persist-sensitive-storage';
 import {persistReducer, persistStore} from 'redux-persist';
 import {legacy_createStore as createStore} from 'redux';
+// Reducers
+import globalReducer from './global';
+import accountReducer from './account';
+import dashboardReducer from './dashboard';
 
 const sensitiveStorage = createSensitiveStorage({
   keychainService: 'proxyLineKeychain',
@@ -18,12 +22,9 @@ const accountPersistConfig = {
   storage: sensitiveStorage,
 };
 
-// Reducers
-import globalReducer from './global';
-import accountReducer from './account';
-
 const rootReducer = combineReducers({
   global: globalReducer,
+  dashboard: dashboardReducer,
   account: persistReducer(accountPersistConfig, accountReducer),
 });
 
