@@ -11,6 +11,12 @@ import {legacy_createStore as createStore} from 'redux';
 import globalReducer from './global';
 import accountReducer from './account';
 import dashboardReducer from './dashboard';
+import priceReducer from './price';
+import newOrderReducer from './newOrder';
+import orderReducer from './orders';
+import proxyReducer from './proxy';
+
+import ProxyLineSDK from '~libs/proxyline-sdk';
 
 const sensitiveStorage = createSensitiveStorage({
   keychainService: 'proxyLineKeychain',
@@ -25,6 +31,10 @@ const accountPersistConfig = {
 const rootReducer = combineReducers({
   global: globalReducer,
   dashboard: dashboardReducer,
+  price: priceReducer,
+  newOrder: newOrderReducer,
+  orders: orderReducer,
+  proxy: proxyReducer,
   account: persistReducer(accountPersistConfig, accountReducer),
 });
 
@@ -45,7 +55,14 @@ function configureStore() {
     persistedReducer,
     composeWithDevTools(middleWareEnhancer),
   );
-  let persistor = persistStore(store);
+  let persistor = persistStore(store, {}, () => {
+    const isAuth = store.getState().account.isAuth;
+    if (isAuth) {
+      const account = store.getState().account;
+      ProxyLineSDK.setToken(account.userId + ':' + account.token);
+    }
+    return;
+  });
   return {store, persistor};
 }
 
@@ -58,3 +75,13 @@ export type AppThunk = ThunkAction<void, AppState, null, Action<string>>;
 export type AppDispatch = typeof store.dispatch;
 export const useAppDispatch: () => AppDispatch = useDispatch;
 export const useAppSelector: TypedUseSelectorHook<AppState> = useSelector;
+export const useDispatchWrap = <T>(values: T[]): T[] => {
+  const dispatch = useDispatch();
+  //@ts-ignore
+  return values.map(i => {
+    return (...any: any) => {
+      //@ts-ignore
+      dispatch(i(...any));
+    };
+  });
+};

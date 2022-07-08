@@ -30,7 +30,6 @@ const FAQPage: React.FC<Props> = ({}) => {
         </TouchableOpacity>
       ),
     });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // _faq = _faq.filter(item => item.title.indexOf('IPV4') !== -1);

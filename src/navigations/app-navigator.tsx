@@ -15,6 +15,9 @@ import {SpeedTestResultPage} from '~pages/settings-page/pages/speed-test-page/pa
 import {ProxyPage} from '~pages/proxy-page';
 import {OrdersPage} from '~pages/orders-page';
 import {WalletPage} from '~pages/wallet-page';
+import {NewOrderPage} from '~pages/new-order-page';
+import {SelectCountryPage} from '~pages/new-order-page/pages/select-country-page';
+import {MyProxiesPage} from '~pages/my-proxies-page';
 
 interface Props {
   initialRouteName: string;
@@ -116,6 +119,27 @@ export function AppNavigator(props: Props) {
         }}
         name={Routes.App.Wallet}
         component={WalletPage}
+      />
+      <StackNavigator.Screen
+        options={{
+          title: 'Оформление заказа',
+        }}
+        name={Routes.App.NewOrderPage}
+        component={NewOrderPage}
+      />
+      <StackNavigator.Screen
+        options={{
+          title: 'Выбор страны',
+        }}
+        name={Routes.App.SelectCountry}
+        component={SelectCountryPage}
+      />
+      <StackNavigator.Screen
+        options={{
+          title: 'Мои прокси',
+        }}
+        name={Routes.App.Proxies}
+        component={MyProxiesPage}
       />
     </StackNavigator.Navigator>
   );

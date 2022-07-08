@@ -1,6 +1,7 @@
 import React from 'react';
 import {TransitionPresets} from '@react-navigation/stack';
 import {NavigationHeader} from '~components/navigation-header';
+import {Platform} from 'react-native';
 
 export const Header = {
   header: (params: any) => {
@@ -26,7 +27,7 @@ export const Header = {
 };
 
 export const screenOptions = {
-  gestureEnabled: true,
+  gestureEnabled: Platform.OS === 'ios',
   ...TransitionPresets.SlideFromRightIOS,
   ...Header,
 };

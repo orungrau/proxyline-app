@@ -21,6 +21,7 @@ const AccountPage: React.FC<Props> = ({}) => {
 
   useTabBarVisible(false);
 
+  console.log(account);
   const navigation = useNavigation();
   const dispatch = useDispatch();
 
@@ -41,7 +42,6 @@ const AccountPage: React.FC<Props> = ({}) => {
         </TouchableOpacity>
       ),
     });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

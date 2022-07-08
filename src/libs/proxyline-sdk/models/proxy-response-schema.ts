@@ -1,16 +1,16 @@
 export interface ProxyResponseSchema {
   id: number;
   ip: string;
-  internalIp?: string;
-  countryId: string;
-  ipType: number;
-  ipVersion: number;
-  portHttp: number;
-  portSocks5: number;
+  internal_ip?: string;
+  country_id: string;
+  ip_type: number;
+  ip_version: number;
+  port_http: number;
+  port_socks5: number;
   username: string;
   password: string;
-  orderId: number;
-  autoRenewal?: number;
-  dateStart: Date;
-  dateEnd: Date;
+  order_id: number;
+  auto_renewal?: number;
+  date_start: Date;
+  date_end: Date;
 }

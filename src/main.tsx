@@ -12,13 +12,18 @@ import store, {persistor, useAppSelector} from '~stores';
 import {PersistGate} from 'redux-persist/integration/react';
 import {getGlobal} from '~stores/global/selectors';
 import {LoadingOverlay} from '~components/loading-overlay';
-import TabBarNavigator from '~navigations/tabs-navigator';
 import {getAccountSelector} from '~stores/account/selectors';
+import moment from 'moment';
+// @ts-ignore
+import localization from 'moment/locale/ru';
+import {WakeupPage} from '~pages/wakeup-page';
+
+moment.updateLocale('ru', localization);
 
 ProxyLineSDK.setProject(PROJECT_ID, PROJECT_KEY);
 
 const App = () => {
-  const {isAuth} = useAppSelector(getAccountSelector());
+  const account = useAppSelector(getAccountSelector());
   const {loading} = useAppSelector(getGlobal());
 
   useEffect(() => {
@@ -33,7 +38,7 @@ const App = () => {
         barStyle={'light-content'}
       />
       <NavigationContainer>
-        {isAuth ? <TabBarNavigator /> : <AuthNavigator />}
+        {account.isAuth ? <WakeupPage /> : <AuthNavigator />}
       </NavigationContainer>
       {loading ? (
         <View style={styles.overlay}>

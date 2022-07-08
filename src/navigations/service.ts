@@ -3,8 +3,7 @@ import * as React from 'react';
 import {NavigationContainerRef} from '@react-navigation/core';
 
 export class NavigationService {
-  navigationRef: React.RefObject<NavigationContainerRef<any>> =
-    React.createRef();
+  navigationRef: React.RefObject<NavigationContainerRef> = React.createRef();
 
   private static instance: NavigationService;
 

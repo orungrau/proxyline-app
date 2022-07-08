@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {
   Image,
   ImageBackground,
@@ -9,27 +9,19 @@ import {
 } from 'react-native';
 import styles from './styles';
 import {ConnectionCard} from '~pages/dashboard-page/components/connection-card';
-import {useDispatch} from 'react-redux';
-import {fetchDashboard} from '~stores/dashboard/actions';
 import {useAppSelector} from '~stores';
 import {LoadingOverlay} from '~components/loading-overlay';
-import {fetchAccountData} from '~stores/account/actions';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
+import useTabBarVisible from '~hooks/useTabBarVisible';
 
 interface Props {}
 
 const DashboardPage: React.FC<Props> = ({}) => {
+  useTabBarVisible(true);
   const dashboard = useAppSelector(s => s.dashboard);
-  const dispatch = useDispatch();
 
   const insets = useSafeAreaInsets();
   const topInsert = {marginTop: insets.bottom === 0 ? 20 : 0};
-
-  useEffect(() => {
-    dispatch(fetchDashboard());
-    dispatch(fetchAccountData());
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   return (
     <ImageBackground

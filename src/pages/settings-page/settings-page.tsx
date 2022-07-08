@@ -65,7 +65,6 @@ const SettingsPage: React.FC<Props> = ({}) => {
         </TouchableOpacity>
       ),
     });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

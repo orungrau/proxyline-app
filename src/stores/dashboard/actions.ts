@@ -1,9 +1,10 @@
 import {AppThunk} from '~stores';
-import {setCountry, setLoading} from '~stores/dashboard/index';
+import {setCountry} from '~stores/dashboard/index';
 import {IpApiSdk} from '~libs/ip-api-sdk';
+import {updateWakeMatrix} from '~stores/global';
 
 export const fetchDashboard = (): AppThunk => async dispatch => {
-  dispatch(setLoading(true));
+  // dispatch(setLoading(true));
   IpApiSdk.getIpData()
     .then(r => {
       dispatch(
@@ -16,6 +17,6 @@ export const fetchDashboard = (): AppThunk => async dispatch => {
     })
     .catch()
     .finally(() => {
-      dispatch(setLoading(false));
+      dispatch(updateWakeMatrix());
     });
 };

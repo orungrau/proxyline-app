@@ -26,5 +26,8 @@ export const Routes = {
     Orders: 'Orders',
     Proxy: 'Proxy',
     Wallet: 'Wallet',
+    NewOrderPage: 'NewOrderPage',
+    SelectCountry: 'SelectCountry',
+    Proxies: 'Proxies',
   },
 };

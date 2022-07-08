@@ -34,10 +34,10 @@ export default StyleSheet.create({
   },
   body: {
     marginTop: 1,
-    height: 64,
     backgroundColor: '#1D2026',
     borderBottomLeftRadius: 14,
     borderBottomRightRadius: 14,
+    overflow: 'hidden',
   },
   footer: {
     justifyContent: 'center',

@@ -5,7 +5,7 @@ import {CheckResultCell} from '~pages/settings-page/pages/proxy-check-page/pages
 import {ProxyCheckResult} from '~libs/proxyline-sdk/models/proxy-check-result';
 import {RouteProp} from '@react-navigation/native';
 import {Styles} from '~styles';
-import {SegmentBar} from '~pages/settings-page/pages/proxy-check-page/pages/proxy-check-result-page/components/segment-bar';
+import {SegmentBar} from '~components/segment-bar';
 
 interface Props {
   route?: RouteProp<any, any>;

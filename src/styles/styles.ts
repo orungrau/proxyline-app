@@ -11,11 +11,17 @@ export default StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  alignItems: {
+    alignItems: 'center',
+  },
   headerButtonText: {
     fontSize: 15,
     fontFamily: 'SourceSansPro-SemiBold',
     color: '#FAC637',
     lineHeight: 15,
     textAlign: 'right',
+  },
+  flexGrowNull: {
+    flexGrow: 0,
   },
 });

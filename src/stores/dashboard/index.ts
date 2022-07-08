@@ -9,10 +9,11 @@ export interface CountryInfo {
 export interface DashboardState {
   loading: boolean;
   country?: CountryInfo;
+  selectProxyId?: number;
 }
 
 const initialState: DashboardState = {
-  loading: true,
+  loading: false,
 };
 
 const dashboardSlice = createSlice({
@@ -23,6 +24,10 @@ const dashboardSlice = createSlice({
       state.loading = action.payload;
       return state;
     },
+    setSelectProxyId(state, action: PayloadAction<number>) {
+      state.selectProxyId = action.payload;
+      return state;
+    },
     setCountry(state, action: PayloadAction<CountryInfo>) {
       state.country = action.payload;
       return state;
@@ -30,6 +35,7 @@ const dashboardSlice = createSlice({
   },
 });
 
-export const {setLoading, setCountry} = dashboardSlice.actions;
+export const {setLoading, setCountry, setSelectProxyId} =
+  dashboardSlice.actions;
 
 export default dashboardSlice.reducer;
